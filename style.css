@@ -1,0 +1,223 @@
+/* ESTILOS GENERALES DE LA INTERFAZ CRÍTICA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #00ff66;
+    padding: 20px;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 850px;
+    margin: 20px auto;
+    border: 1px solid #00ff66;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.15);
+    background-color: #0f0f0f;
+    position: relative;
+}
+
+h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #00ff66;
+    padding-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle-page {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    color: #a0cca0;
+}
+
+.contract-box {
+    background: #000000;
+    border: 1px dashed #33aa33;
+    padding: 15px;
+    height: 160px;
+    overflow-y: scroll;
+    margin-bottom: 25px;
+    font-size: 0.85rem;
+    color: #55b572;
+}
+
+.grid-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.clause-btn {
+    background: transparent;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    padding: 12px 10px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+}
+
+.clause-btn:hover {
+    background: #00ff66;
+    color: #000;
+    box-shadow: 0 0 12px #00ff66;
+}
+
+
+/* 🛠️ CAJA DE REVELACIÓN CORREGIDA CON ESPACIOS NORMALES */
+.reveal-box {
+    background: #150505;
+    border: 1px solid #ff3333;
+    color: #ff3333;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    display: none;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
+    
+    /* Reglas de oro corregidas para que respete los espacios entre palabras */
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word; /* Corta de forma segura al final de la línea */
+    word-break: normal;        /* EVITA que las letras se peguen entre sí */
+    white-space: normal;       /* Mantiene el flujo de texto tradicional */
+    
+    /* Animación estética de advertencia en el borde */
+    animation: borderAlert 2s infinite alternate;
+}
+
+.reveal-box h3 {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+.reveal-box p {
+    color: #ff5555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+@keyframes borderAlert {
+    0% { border-color: #ff3333; box-shadow: 0 0 10px rgba(255, 51, 51, 0.2); }
+    100% { border-color: #ff6666; box-shadow: 0 0 20px rgba(255, 51, 51, 0.5); }
+}
+
+.sabotage-area {
+    position: relative;
+    height: 80px;
+    margin-top: 30px;
+    border: 1px dotted #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.trap-btn {
+    background: #ff3333;
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    position: absolute;
+    transition: background 0.2s;
+    border-radius: 4px;
+}
+
+.trap-btn:hover {
+    background: #ff6666;
+}
+
+/* EFECTO 3 MEJORADO: ALERTA BIOMÉTRICA CON LECTURA ESTÁTICA */
+.camera-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 0, 0, 0.95); /* Rojo intenso */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-in-out; /* Desvanecimiento suave al final */
+}
+
+/* Esta clase se activa con JS y maneja toda la secuencia de tiempo */
+.camera-flash.active {
+    animation: alertSequence 5.5s forwards; 
+}
+
+@keyframes alertSequence {
+    /* 1° Parpadeo */
+    0%   { opacity: 0; }
+    8%   { opacity: 1; }
+    16%  { opacity: 0; }
+    
+    /* 2° Parpadeo */
+    24%  { opacity: 1; }
+    32%  { opacity: 0; }
+    
+    /* 3° Parpadeo y acá se QUIDA FIJO */
+    40%  { opacity: 1; }
+    
+    /* Se queda estático al 100% de brillo durante unos 4 segundos */
+    85%  { opacity: 1; }
+    
+    /* En el último tramo se desvanece de forma suave */
+    100% { opacity: 0; }
+}
+
+.flash-text {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 20px;
+    border: 4px solid #fff;
+    background: #000;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+.footer-brand {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #444;
+    margin-top: 40px;
+    border-top: 1px solid #222;
+    padding-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .grid-buttons {
+        grid-template-columns: 1fr;
+    }
+}
