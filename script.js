@@ -7,7 +7,7 @@ const cameraFlash = document.getElementById('cameraFlash');
 
 let typingTimer = null;
 
-// TEXTOS CRÍTICOS TRADUCIDOS (Garantizamos espacios limpios)
+// TEXTOS CRÍTICOS TRADUCIDOS (En criollo y directos)
 const textosTraduccion = {
     datos: {
         titulo: "⚠️ CLÁUSULA 1.1: Tu privacidad es una mercancía corporativa",
@@ -23,23 +23,21 @@ const textosTraduccion = {
     }
 };
 
-// EFECTO 1: MÁQUINA DE ESCRIBIR CORREGIDA
+// EFECTO 1: MÁQUINA DE ESCRIBIR
 function revelarClausula(tipo) {
     clearInterval(typingTimer);
     revealBox.style.display = 'block';
     revealTitle.innerText = textosTraduccion[tipo].titulo;
     
-    // Forzamos al contenedor a usar estilos de texto normales en línea
     revealText.style.whiteSpace = "normal";
     revealText.style.wordBreak = "normal";
-    revealText.innerHTML = ""; // Usamos innerHTML para evitar fallos de renderizado
+    revealText.innerHTML = ""; 
     
     const textoCompleto = textosTraduccion[tipo].cuerpo;
     let index = 0;
     
     typingTimer = setInterval(() => {
         if (index < textoCompleto.length) {
-            // Si la letra actual es un espacio, metemos un espacio HTML explícito para que no se pegue
             if (textoCompleto.charAt(index) === " ") {
                 revealText.innerHTML += " ";
             } else {
@@ -49,7 +47,7 @@ function revelarClausula(tipo) {
         } else {
             clearInterval(typingTimer);
         }
-    }, 10); // Un poquitito más rápido para evitar lag visual
+    }, 10); 
 
     if (tipo === 'rostro') {
         triggerCameraFlash();
@@ -64,16 +62,15 @@ btnTrap.addEventListener('mouseover', () => {
     btnTrap.style.position = 'fixed';
     btnTrap.style.left = randomX + 'px';
     btnTrap.style.top = randomY + 'px';
+    
+    // Evitamos que quede tapado por otros elementos
     btnTrap.style.zIndex = '9999';
 });
 
-// FUNCIÓN DEL PARPADEO RADICAL Y LECTURA ESTÁTICA CORREGIDA
+// EFECTO 3: FUNCIÓN DEL PARPADEO RADICAL Y LECTURA ESTÁTICA
 function triggerCameraFlash() {
-    // Activamos la nueva secuencia de CSS
     cameraFlash.classList.add('active');
-    
-    // Esperamos 5.5 segundos (5500 milisegundos) a que termine toda la animación antes de apagarla
     setTimeout(() => {
         cameraFlash.classList.remove('active');
-    }, 5500);
+    }, 5500); // 5.5 segundos totales coordinados con CSS
 }
