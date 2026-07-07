@@ -1,4 +1,3 @@
-/* ESTILOS GENERALES DE LA INTERFAZ CRÍTICA */
 * {
     margin: 0;
     padding: 0;
@@ -14,6 +13,147 @@ body {
     overflow-x: hidden;
 }
 
+.welcome-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #050505;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.welcome-card {
+    background: #111;
+    border: 1px solid #333;
+    max-width: 500px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    text-align: left;
+}
+
+.welcome-card h2 {
+    font-size: 1.1rem;
+    color: #fff;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.welcome-sub {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.welcome-divider {
+    border: 0;
+    border-top: 1px solid #222;
+    margin-bottom: 15px;
+}
+
+.welcome-text {
+    font-size: 0.85rem;
+    color: #aaa;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    font-family: sans-serif;
+}
+
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #999;
+    user-select: none;
+    font-family: sans-serif;
+    line-height: 1.4;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 3px;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    border-color: #666;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #00ff66;
+    border-color: #00ff66;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 9px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.enter-btn {
+    width: 100%;
+    background: #222;
+    color: #555;
+    border: 1px solid #333;
+    padding: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: not-allowed;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    border-radius: 4px;
+}
+
+.enter-btn:not(:disabled) {
+    background: transparent;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    cursor: pointer;
+}
+
+.enter-btn:not(:disabled):hover {
+    background: #00ff66;
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+}
+
 .container {
     max-width: 850px;
     margin: 20px auto;
@@ -24,9 +164,8 @@ body {
     position: relative;
 }
 
-/* 🛠️ TÍTULOS ACHICADOS Y FORMALES (Estilo Contrato Real) */
 h1 {
-    font-size: 1.15rem; /* Letra más chica y formal, como contrato de abogacía */
+    font-size: 1.15rem;
     text-align: center;
     margin-bottom: 5px;
     text-transform: uppercase;
@@ -35,7 +174,7 @@ h1 {
 }
 
 .subtitle-page {
-    font-size: 0.75rem; /* Subtítulo muy chiquito, de letra chica corporativa */
+    font-size: 0.75rem;
     color: #666;
     margin-bottom: 25px;
     text-align: center;
@@ -49,20 +188,18 @@ p {
     color: #a0cca0;
 }
 
-/* CAJA DE CONTRATO (Muro de texto denso) */
 .contract-box {
     background: #000000;
     border: 1px dashed #33aa33;
     padding: 15px;
-    height: 180px; /* Un pelito más alta para apreciar mejor el scroll continuo */
+    height: 180px;
     overflow-y: scroll;
     margin-bottom: 25px;
-    font-size: 0.8rem; /* Letra bien chiquita adentro */
+    font-size: 0.8rem;
     color: #55b572;
     text-align: justify;
 }
 
-/* Subtítulos internos de la caja de contrato */
 .contract-box h2 {
     font-size: 0.85rem;
     color: #00ff66;
@@ -96,7 +233,6 @@ p {
     box-shadow: 0 0 12px #00ff66;
 }
 
-/* CAJA DE REVELACIÓN */
 .reveal-box {
     background: #150505;
     border: 1px solid #ff3333;
@@ -204,7 +340,6 @@ p {
     text-shadow: 0 0 10px #ff0000;
 }
 
-/* 🛠️ PIE DE PÁGINA CORREGIDO: TEXTO CENTRADO Y LOGO A LA DERECHA */
 .footer-brand {
     font-size: 0.75rem;
     color: #444;
@@ -212,7 +347,7 @@ p {
     border-top: 1px solid #222;
     padding-top: 15px;
     display: grid;
-    grid-template-columns: 1fr auto; /* Deja el texto centrado en su espacio y el logo al final */
+    grid-template-columns: 1fr auto;
     align-items: center;
     width: 100%;
 }
@@ -220,7 +355,7 @@ p {
 .footer-brand span {
     text-align: center;
     grid-column: 1;
-    padding-left: 20px; /* Compensa el espacio del logo para un centrado perfecto */
+    padding-left: 20px;
 }
 
 .info-icon-container {
@@ -229,13 +364,6 @@ p {
     display: inline-block;
 }
 
-/* Contenedor relativo para posicionar el cartel flotante */
-.info-icon-container {
-    position: relative;
-    display: inline-block;
-}
-
-/* El logo circular con animación de pulso en ROJO de alerta */
 .info-icon {
     width: 22px;
     height: 22px;
@@ -247,35 +375,24 @@ p {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease;
-    /* Aplicamos la animación para que titile en el color rojo del cartel */
     animation: sugerenciaPulsoRojo 2s infinite alternate;
 }
 
-/* Animación que hace titilar el icono en rojo para llamar la atención */
 @keyframes sugerenciaPulsoRojo {
-    0% {
-        color: #444;
-        border-color: #444;
-    }
-    100% {
-        color: #ff3333; /* El mismo rojo de alerta de tu caja de revelación */
-        border-color: #ff3333;
-        box-shadow: 0 0 8px rgba(255, 51, 51, 0.4);
-    }
+    0% { color: #444; border-color: #444; }
+    100% { color: #ff3333; border-color: #ff3333; box-shadow: 0 0 8px rgba(255, 51, 51, 0.4); }
 }
 
-/* Cuando el usuario apoya el mouse, se clava en el VERDE brillante original */
 .info-icon-container:hover .info-icon {
     color: #00ff66 !important;
     border-color: #00ff66 !important;
     box-shadow: 0 0 10px rgba(0, 255, 102, 0.5) !important;
-    animation: none; /* Frena el titileo rojo cuando el mouse está encima */
+    animation: none;
 }
 
-/* Caja oculta del cartel flotante */
 .tooltip-box {
     position: absolute;
-    bottom: 30px; /* Se despliega hacia arriba del logo */
+    bottom: 30px;
     right: 0;
     width: 260px;
     background: #111;
@@ -286,32 +403,19 @@ p {
     line-height: 1.4;
     border-radius: 4px;
     box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
-    
-    /* Estado inicial: invisible y oculto */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     transition: opacity 0.2s ease, visibility 0.2s;
 }
 
-/* 🚀 MAGIA DEL CSS: Cuando el mouse está encima, se muestra el cartel flotante */
 .info-icon-container:hover .tooltip-box {
     opacity: 1;
     visibility: visible;
 }
 
 @media (max-width: 768px) {
-    .grid-buttons {
-        grid-template-columns: 1fr;
-    }
-    .footer-brand {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    .tooltip-box {
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-    }
+    .grid-buttons { grid-template-columns: 1fr; }
+    .footer-brand { flex-direction: column; gap: 15px; text-align: center; }
+    .tooltip-box { right: auto; left: 50%; transform: translateX(-50%); }
 }
